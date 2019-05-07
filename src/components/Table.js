@@ -52,7 +52,7 @@ class Table extends Component {
     return (
       <div className="container-table">
         <div className="container-table__header">
-          current users
+          list of users
         </div>
         <div className="container-table__content">
           <table className="col-4">
@@ -61,25 +61,25 @@ class Table extends Component {
                 <th className="first-name">
                   First Name
                   <span className="arrow-icon" onClick={() => this.handleUsersSort('firstName')}>
-                    &#8597;
+                  &#x21D5;
                   </span>
                 </th>
                 <th className="last-name">
                   Last Name
                   <span className="arrow-icon" onClick={() => this.handleUsersSort('lastName')}>
-                    &#8597;
+                  &#x21D5;
                   </span>
                 </th>
                 <th className="phone">
                   Phone
                   <span className="arrow-icon" onClick={() => this.handleUsersSort('phone')}>
-                    &#8597;
+                  &#x21D5;
                   </span>
                 </th>
                 <th className="age">
                   Age
                   <span className="arrow-icon" onClick={() => this.handleUsersSort('age')}>
-                    &#8597;
+                  &#x21D5;
                   </span>
                 </th>
               </tr>
@@ -99,7 +99,7 @@ class Table extends Component {
                         {user[3]}
                       </th>
                       <th className="cross-icon" onClick={() => this.props.onRemoveUser(index)} >
-                        X
+                        delete
                       </th>
                     </tr>
                   )

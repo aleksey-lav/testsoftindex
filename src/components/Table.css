@@ -1,3 +1,4 @@
+
 .container-table {
   text-align: center;
   min-height: 465px;
@@ -40,17 +41,19 @@
   display: inline-flex;
   height: 50px;
   width: 100%;
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
 }
 
 .arrow-icon {
   cursor: pointer;
   margin-left: 10px;
+  
 }
 
 .first-name {
   width: 175px;
   text-align: left;
+  
 }
 
 .last-name {
@@ -65,17 +68,21 @@
 
 .age {
   text-align: left;
-  width: 118px;
+  width: 80px;
 }
 
 .cross-icon {
   text-align: right;
   cursor: pointer;
-  width: 10px;
+  width: 50px;
   text-transform: lowercase;
   line-height: 16px;
   font-style: normal;
-  font-weight: 200;
+  font-weight: bold;
   font-size: 16px;
-  color: #8f0a2b;
+  color: tomato;
+
+}
+.cross-icon:hover {
+  color: rgb(102, 17, 2)
 }

@@ -4,6 +4,7 @@ import Form from './components/Form';
 import Table from './components/Table';
 
 
+
 class App extends Component {
 
   state = {
@@ -47,21 +48,14 @@ class App extends Component {
   handleSubmit = () => {
     let items = JSON.parse(localStorage.getItem('items'));
     console.log(items)
-
+      const {firstName, lastName, phone, age} = this.state
     if (items) {
       localStorage.setItem('items', JSON.stringify([
-        ...items, [
-          ...this.state
-        ]
+        ...items, [firstName, lastName, phone, age]
       ]));
     } else {
       localStorage.setItem('items', JSON.stringify([
-        [
-          this.state.firstName,
-          this.state.lastName,
-          this.state.phone,
-          this.state.age
-        ],
+        [firstName, lastName, phone, age]
       ]));
     }
     this.setState({
@@ -118,12 +112,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Table
-          users={this.state.users}
-          onRemoveUser={this.handleRemoveUser}
-          onSort={this.handleSort}
-        />
-        <Form
+      <Form
           firstName={firstName}
           lastName={lastName}
           phone={phone}
@@ -131,6 +120,12 @@ class App extends Component {
           handleSubmit={this.handleSubmit}
           handleValidValue={this.handleChange}
         />
+        <Table
+          users={this.state.users}
+          onRemoveUser={this.handleRemoveUser}
+          onSort={this.handleSort}
+        />
+        
       </div>
     );
   }
