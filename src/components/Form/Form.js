@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import InputComponent from './InputComponent';
+import InputComponent from '../InputComponent/InputComponent';
 import './Form.css';
 
 
@@ -11,6 +11,7 @@ class Form extends Component {
     ageVerif: ''
   }
 
+  //valid input data name
   toCheckValidFirstName = (e) => {
     console.log(e.target.value)
     this.setState({
@@ -19,12 +20,14 @@ class Form extends Component {
     console.log(e.target.value)
     this.props.handleValidValue(e);
   }
+  //valid input data surname
   toCheckValidLastName = (e) => {
     this.setState({
       lastNameVerif: /^[a-zA-Z]+$/.test(e.target.value)
     });
     this.props.handleValidValue(e);
   }
+  //valid input data phone
   toCheckValidPhone = (e) => {
     this.setState({
       phoneVerif: /^\+[0-9]{12}$/.test(e.target.value)
@@ -32,6 +35,7 @@ class Form extends Component {
     this.props.handleValidValue(e);
   }
 
+  //valit input data age
   toCheckValidAge = (e) => {
     this.setState({
       ageVerif: e.target.value < 100 && /^\d+$/.test(e.target.value)
@@ -39,6 +43,7 @@ class Form extends Component {
     this.props.handleValidValue(e);
   }
 
+  //to add new user
   toSetForm = (e) => {
     e.preventDefault();
     this.setState({
@@ -64,6 +69,7 @@ class Form extends Component {
       ageVerif,
     } = this.state;
 
+    //variables for styles class
     const disableButton = !(firstNameVerif && lastNameVerif  && phoneVerif && ageVerif);
     const styleNameButton = disableButton ? 'form-button-disabled' : 'form-button-active'
     const styleFirstName = firstNameVerif === '' ? '' : firstNameVerif ? 'valid-form' : 'invalid-form';

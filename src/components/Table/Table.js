@@ -9,75 +9,75 @@ class Table extends Component {
     sortByAge: false,
   }
 
+  //sort by name and key submit
   toSortByName = (byName) => {
-    let sortValue;
+    let flag;
     switch (byName) {
       case 'firstName':
-        sortValue = this.state.sortByFistName;
-        console.log(sortValue)
-        this.props.onSortData(0, sortValue);
+        flag = this.state.sortByFistName;
+        console.log(flag)
+        this.props.onSortData(0, flag);
         this.setState({
-          sortByFistName: !sortValue
+          sortByFistName: !flag
         });
         break;
       case 'lastName':
-        sortValue = this.state.sortByLastName;
-        this.props.onSortData(1, sortValue);
+        flag = this.state.sortByLastName;
+        this.props.onSortData(1, flag);
         this.setState({
-          sortByLastName: !sortValue
+          sortByLastName: !flag
         });
         break;
       case 'phone':
-        sortValue = this.state.sortByPhone;
-        this.props.onSortData(2, sortValue);
+        flag = this.state.sortByPhone;
+        this.props.onSortData(2, flag);
         this.setState({
-          sortByPhone: !sortValue
+          sortByPhone: !flag
         });
         break;
       case 'age':
-        sortValue = this.state.sortByAge;
-        this.props.onSortData(3, sortValue);
+        flag = this.state.sortByAge;
+        this.props.onSortData(3, flag);
         this.setState({
-          sortByAge: !sortValue
+          sortByAge: !flag
         });
         break;
       default:
         break;
     }
   }
-
   render() {
     const { users } = this.props
     return (
       <div className="container">
         <div className="container__header">
-          list of users
+        softindex list
         </div>
         <div className="container__content">
-          <table className="col-4">
+          <table>
             <tbody>
               <tr className="container__content-item">
                 <th className="first-name">
                   First Name
-                  <span className="arrow-icon" onClick={() => this.toSortByName('firstName')}>
+                  <span className="arrow-sort-icon" onClick={() => this.toSortByName('firstName')}>
                   &#x21D5;
                   </span>
                 </th>
                 <th className="last-name">
                   Last Name
-                  <span className="arrow-icon" onClick={() => this.toSortByName('lastName')}>
+                  <span className="arrow-sort-icon" onClick={() => this.toSortByName('lastName')}>
                   &#x21D5;
                   </span>
                 </th>
                 <th className="phone">
                   Phone
-                  <span className="arrow-icon" onClick={() => this.toSortByName('phone')}>
+                  <span className="arrow-sort-icon" onClick={() => this.toSortByName('phone')}>
                   &#x21D5;
                   </span>
                 </th>
                 <th className="age">
                   Age
-                  <span className="arrow-icon" onClick={() => this.toSortByName('age')}>
+                  <span className="arrow-sort-icon" onClick={() => this.toSortByName('age')}>
                   &#x21D5;
                   </span>
                 </th>
@@ -97,7 +97,7 @@ class Table extends Component {
                       <th className="age">
                         {user[3]}
                       </th>
-                      <th className="cross-icon" onClick={() => this.props.onDeleteUser(index)} >
+                      <th className="delete-text-icon" onClick={() => this.props.onDeleteUser(index)} >
                         delete
                       </th>
                     </tr>

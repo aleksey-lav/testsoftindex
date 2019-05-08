@@ -39,15 +39,19 @@
 
 .container__content-item {
   display: inline-flex;
-  height: 50px;
+  height: 45px;
   width: 100%;
-  /* word-wrap: break-word; */
 }
 
-.arrow-icon {
+.arrow-sort-icon {
   cursor: pointer;
   margin-left: 10px;
-  
+}
+.arrow-sort-icon:hover {
+  color: tomato
+}
+.arrow-sort-icon-act:active{
+  color: tomato
 }
 
 .first-name {
@@ -71,7 +75,7 @@
   width: 80px;
 }
 
-.cross-icon {
+.delete-text-icon {
   text-align: right;
   cursor: pointer;
   width: 50px;
@@ -83,6 +87,6 @@
   color: tomato;
 
 }
-.cross-icon:hover {
+.delete-text-icon:hover {
   color: rgb(102, 17, 2)
 }

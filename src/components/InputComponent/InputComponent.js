@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 class InputComponent extends Component {
 
+  //input data form and transfer these to validation
   handleChangeInput = (e) => {
     console.log(e.target.value)
     console.log(e.target.name)

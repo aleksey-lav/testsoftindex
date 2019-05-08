@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Form from './components/Form';
-import Table from './components/Table';
+import Form from './components/Form/Form';
+import Table from './components/Table/Table';
 
 
 
 class App extends Component {
-
   state = {
     users: JSON.parse(localStorage.getItem('items')),
     firstName: '',
@@ -14,37 +13,15 @@ class App extends Component {
     phone: '',
     age: ''
   }
-
+  //input valid data and put to state
   handleChange = (e) =>{
   console.log("you are in App.js => handleChange") 
   this.setState ({
     [e.target.name]: e.target.value
   })
   } 
-/*   handleChangeFirstName = (value) => {
-    this.setState({
-      firstName: value,
-    });
-  }
 
-  handleChangeLastName = (value) => {
-    this.setState({
-      lastName: value,
-    });
-  }
-
-  handleChangePhone = (value) => {
-    this.setState({
-      phone: value,
-    });
-  }
-  
-  handleChangeAge = (value) => {
-    this.setState({
-      age: value,
-    });
-  }
- */
+  //add user to localstorage and get item from there and update localstoeage with new datas
   handleSubmit = () => {
     let itemsFromLocalstorage = JSON.parse(localStorage.getItem('items'));
     console.log(itemsFromLocalstorage)
@@ -83,7 +60,7 @@ class App extends Component {
     this.updateStateUsers();
   }
 
-  //sort table list from any column
+  //sort table list from any column use compare js
   toSortByTableName = (key, sortValue) => {
     console.log(sortValue)
     console.log(key)
