@@ -103,7 +103,7 @@ class Form extends Component {
               <InputComponent
                 type="text"
                 onChangeValue={this.toCheckValidPhone}
-                placeholder="Phone"
+                placeholder="Phone +38"
                 name='phone'
                 value={phone}
                 className={`form-group__input ${stylePhone}`}

@@ -46,12 +46,12 @@ class App extends Component {
   }
  */
   handleSubmit = () => {
-    let items = JSON.parse(localStorage.getItem('items'));
-    console.log(items)
+    let itemsFromLocalstorage = JSON.parse(localStorage.getItem('items'));
+    console.log(itemsFromLocalstorage)
       const {firstName, lastName, phone, age} = this.state
-    if (items) {
+    if (itemsFromLocalstorage) {
       localStorage.setItem('items', JSON.stringify([
-        ...items, [firstName, lastName, phone, age]
+        ...itemsFromLocalstorage, [firstName, lastName, phone, age]
       ]));
     } else {
       localStorage.setItem('items', JSON.stringify([
@@ -64,52 +64,49 @@ class App extends Component {
       phone: '',
       age: '',
     });
-    this.updateUsers();
+    this.updateStateUsers();
   }
 
-  updateUsers = () => {
+  //update state user from localstorage data
+  updateStateUsers = () => {
     this.setState({
       users: JSON.parse(localStorage.getItem('items')),
     });
   }
 
-  handleRemoveUser = (key) => {
-    let items = JSON.parse(localStorage.getItem('items'));
-
-    localStorage.setItem('items', JSON.stringify(items.filter(function(value, index, arr){
-        return index !== key;
-      })
-    ));
-    this.updateUsers();
+  //delete from table user by index !== key
+  toDeleteUser = (key) => {
+    console.log(key)
+    let itemsFromLocalstorage = JSON.parse(localStorage.getItem('items'));
+    console.log(itemsFromLocalstorage)
+    localStorage.setItem('items', JSON.stringify(itemsFromLocalstorage.filter((item,index) => index !== key)));
+    this.updateStateUsers();
   }
 
-  handleSort = (key, dir) => {
+  //sort table list from any column
+  toSortByTableName = (key, sortValue) => {
+    console.log(sortValue)
+    console.log(key)
     let items = this.state.users;
-
     items.sort((a, b) => {
+      //sort age from up to down and reverse
       if (key === 3) {
-        return dir ? a[key] - b[key] : b[key] - a[key];
+        return  sortValue ? a[key] - b[key] : b[key] - a[key]
       }
       if (a[key] > b[key]) {
-        return dir ? 1 : -1;
+        return sortValue ? 1 : -1;
       }
       if (a[key] < b[key]) {
-        return dir ? -1 : 1;
+        return sortValue ? -1 : 1;
       }
       return 0;
     });
     localStorage.setItem('items', JSON.stringify(items));
-    this.updateUsers();
+    this.updateStateUsers();
   }
 
   render() {
-    const {
-      firstName,
-      lastName,
-      phone,
-      age,
-    } = this.state
-
+    const {firstName,lastName,phone,age,} = this.state
     return (
       <div className="App">
       <Form
@@ -122,10 +119,9 @@ class App extends Component {
         />
         <Table
           users={this.state.users}
-          onRemoveUser={this.handleRemoveUser}
-          onSort={this.handleSort}
+          onDeleteUser={this.toDeleteUser}
+          onSortData={this.toSortByTableName}
         />
-        
       </div>
     );
   }

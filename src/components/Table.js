@@ -2,43 +2,43 @@ import React, { Component } from 'react';
 import './Table.css';
 
 class Table extends Component {
-  state = {
-    firstNameSort: true,
-    lastNameSort: true,
-    phoneSort: true,
-    ageSort: true,
+  state = { 
+    sortByFistName: false,
+    sortByLastName: false,
+    sortByPhone: false,
+    sortByAge: false,
   }
 
-  handleUsersSort = (field) => {
+  toSortByName = (byName) => {
     let sortValue;
-
-    switch (field) {
+    switch (byName) {
       case 'firstName':
-        sortValue = this.state.firstNameSort;
-        this.props.onSort(0, sortValue);
+        sortValue = this.state.sortByFistName;
+        console.log(sortValue)
+        this.props.onSortData(0, sortValue);
         this.setState({
-          firstNameSort: !sortValue
+          sortByFistName: !sortValue
         });
         break;
       case 'lastName':
-        sortValue = this.state.lastNameSort;
-        this.props.onSort(1, sortValue);
+        sortValue = this.state.sortByLastName;
+        this.props.onSortData(1, sortValue);
         this.setState({
-          lastNameSort: !sortValue
+          sortByLastName: !sortValue
         });
         break;
       case 'phone':
-        sortValue = this.state.phoneSort;
-        this.props.onSort(2, sortValue);
+        sortValue = this.state.sortByPhone;
+        this.props.onSortData(2, sortValue);
         this.setState({
-          phoneSort: !sortValue
+          sortByPhone: !sortValue
         });
         break;
       case 'age':
-        sortValue = this.state.ageSort;
-        this.props.onSort(3, sortValue);
+        sortValue = this.state.sortByAge;
+        this.props.onSortData(3, sortValue);
         this.setState({
-          ageSort: !sortValue
+          sortByAge: !sortValue
         });
         break;
       default:
@@ -48,44 +48,43 @@ class Table extends Component {
 
   render() {
     const { users } = this.props
-
     return (
-      <div className="container-table">
-        <div className="container-table__header">
+      <div className="container">
+        <div className="container__header">
           list of users
         </div>
-        <div className="container-table__content">
+        <div className="container__content">
           <table className="col-4">
             <tbody>
-              <tr className="container-table__content-item">
+              <tr className="container__content-item">
                 <th className="first-name">
                   First Name
-                  <span className="arrow-icon" onClick={() => this.handleUsersSort('firstName')}>
+                  <span className="arrow-icon" onClick={() => this.toSortByName('firstName')}>
                   &#x21D5;
                   </span>
                 </th>
                 <th className="last-name">
                   Last Name
-                  <span className="arrow-icon" onClick={() => this.handleUsersSort('lastName')}>
+                  <span className="arrow-icon" onClick={() => this.toSortByName('lastName')}>
                   &#x21D5;
                   </span>
                 </th>
                 <th className="phone">
                   Phone
-                  <span className="arrow-icon" onClick={() => this.handleUsersSort('phone')}>
+                  <span className="arrow-icon" onClick={() => this.toSortByName('phone')}>
                   &#x21D5;
                   </span>
                 </th>
                 <th className="age">
                   Age
-                  <span className="arrow-icon" onClick={() => this.handleUsersSort('age')}>
+                  <span className="arrow-icon" onClick={() => this.toSortByName('age')}>
                   &#x21D5;
                   </span>
                 </th>
               </tr>
               {users && users.map((user, index) => {
                   return(
-                    <tr className="container-table__content-item" key={index}>
+                    <tr className="container__content-item" key={index}>
                       <th className="first-name">
                         {user[0]}
                       </th>
@@ -98,7 +97,7 @@ class Table extends Component {
                       <th className="age">
                         {user[3]}
                       </th>
-                      <th className="cross-icon" onClick={() => this.props.onRemoveUser(index)} >
+                      <th className="cross-icon" onClick={() => this.props.onDeleteUser(index)} >
                         delete
                       </th>
                     </tr>
